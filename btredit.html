@@ -897,8 +897,8 @@ var global_error_background = '#ffaaee';
 	var _gConstTransferActivityServiceUrl = 'https://btrservices.azurewebsites.net';
 	
 	//User Attributes
-	var _gUser_LoginName = _spPageContextInfo.userLoginName;
-	var _gUser_User_uni_code = BTRUtils.GetUniValue(_gUser_LoginName); 
+    var _gUser_LoginName = _spPageContextInfo.userLoginName;
+    var _gUser_User_uni_code = BTRUtils.ParseUniValue(_gUser_LoginName);
 	var _gUser_UserDept = null; //TODO: Fix this 
 
 	//Form Variables

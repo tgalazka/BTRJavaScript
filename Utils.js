@@ -25,7 +25,20 @@ BTRUtils.GetParamByName = function getParameterByName(name, url) {
 
 BTRUtils.GetUniValue = function getUniValue() 	{
 		//_spPageContextInfo.userLoginName.replace("@teacherscollegecolumbia.onmicrosoft.com","")
-		return _spPageContextInfo.userLoginName.match(/^(.+)@/)[1];
+    let login = (_spPageContextInfo && _spPageContextInfo.userLoginName) || null;
+    return BTRUtils.ParseUniValue(login);
+}
+
+/**
+ * Parses the supplied email address to extract the 'uni' value, e.g. the unique username.
+ * @param emailAddress A properly formatted email address, like "tom@domain.com"
+ * @return The extracted 'uni' value from the email address, like "tom", or emtpy string.
+ */
+BTRUtils.ParseUniValue = function (emailAddress) {
+    if (!emailAddress) return "";
+
+    let groups = emailAddress.trim().match(/^(.+)@/);
+    return (groups && groups.length > 1) ? groups[1] : "";
 }
 	
 BTRUtils.S4 =	function S4() {
